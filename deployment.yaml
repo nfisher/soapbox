@@ -1,0 +1,25 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: logging-demo
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: soapbox
+  namespace: logging-demo
+  labels:
+    app: soapbox
+spec:
+  selector:
+    matchLabels:
+      app: soapbox
+  template:
+    metadata:
+      labels:
+        app: soapbox
+    spec:
+      containers:
+        - name: soapbox
+          image: nfinstana/soapbox
